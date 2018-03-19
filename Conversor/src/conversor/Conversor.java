@@ -18,9 +18,10 @@ public class Conversor {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-         Scanner ler = new Scanner(System.in);
+        Scanner ler = new Scanner(System.in);
         String resultado = "";
         int num;
+        double r2;
 
         System.out.println("Digite o número 1 para converter de decimal para binário");
         System.out.println("Digite o número 2 para converter de decimal para octal");
@@ -53,15 +54,61 @@ public class Conversor {
 
         }
         if (a == 3) {
-            while ((num / 16) >= 1) {
+            while (num/16 >= 1) {
+                int n;
 
-                resultado = num % 16 + resultado;
-                num = num / 16;
+                n = num%16;
+
+                
+                if (n == 10) {
+                    resultado = "A" + resultado;
+                }
+                else if (n == 11) {
+                    resultado = "B" + resultado;
+                }
+                else if (n == 12) {
+                    resultado = "C" + resultado;
+                }
+                else if (n == 13) {
+                    resultado = "D" + resultado;
+                }
+                else if (n == 14) {
+                    resultado = "E" + resultado;
+                }
+                else if (n == 15) {
+                    resultado = "F" + resultado;
+                }
+                else if (n < 10){
+                    resultado = n + resultado;
+                }
+
+                num = num/16;
 
             }
-            resultado = num + resultado;
+            r2 = num%16;
+            if (r2 == 10) {
+                resultado = "A" + resultado;
+            }
+            else if (r2 == 11) {
+                resultado = "B" + resultado;
+            }
+            else if (r2 == 12) {
+                resultado = "C" + resultado;
+            }
+            else if (r2 == 13) {
+                resultado = "D" + resultado;
+            }
+            else if (r2 == 14) {
+                resultado = "E" + resultado;
+            }
+            else if (r2 == 15) {
+                resultado = "F" + resultado;
+            } else {
+                resultado = num + resultado;
+            }
+            
             System.out.println(resultado);
         }
     }
-    
+
 }

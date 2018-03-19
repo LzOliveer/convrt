@@ -5,17 +5,28 @@
  */
 package UI;
 
+import java.awt.Toolkit;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author luizo
  */
 public class Convrt extends javax.swing.JFrame {
+    
+    Icon erro = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/Erro.png"))));
+    
+    String b, r;
+    int ndecimal;
 
     /**
      * Creates new form Convrt
      */
     public Convrt() {
         initComponents();
+        setIcon();
     }
 
     /**
@@ -29,13 +40,16 @@ public class Convrt extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        ndec = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        base = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        result = new javax.swing.JTextField();
+        kButton1 = new br.com.cyber.componente.KButton();
+        kButton2 = new br.com.cyber.componente.KButton();
+        kButton3 = new br.com.cyber.componente.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor Numérico");
@@ -46,22 +60,61 @@ public class Convrt extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Digite o número decimal que deseja converter");
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setToolTipText("");
+        ndec.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        ndec.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        ndec.setToolTipText("");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Selecione a base para converter");
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Binário", "Octal", "Hexadecimal" }));
+        base.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        base.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Binário", "Octal", "Hexadecimal" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Resultado da converão");
 
-        jTextField2.setEditable(false);
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        result.setEditable(false);
+        result.setBackground(new java.awt.Color(180, 180, 180));
+        result.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        result.setForeground(new java.awt.Color(255, 255, 255));
+        result.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        result.setToolTipText("");
+
+        kButton1.setBackground(new java.awt.Color(140, 140, 140));
+        kButton1.setForeground(new java.awt.Color(255, 255, 255));
+        kButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/exit.png"))); // NOI18N
+        kButton1.setText("Sair");
+        kButton1.setToolTipText("Fecha o conversor");
+        kButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
+
+        kButton2.setBackground(new java.awt.Color(140, 140, 140));
+        kButton2.setForeground(new java.awt.Color(255, 255, 255));
+        kButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Limpar.png"))); // NOI18N
+        kButton2.setText("Limpar");
+        kButton2.setToolTipText("Limpa o texto do conversor para que seja realizada uma nova conversão");
+        kButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        kButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton2ActionPerformed(evt);
+            }
+        });
+
+        kButton3.setBackground(new java.awt.Color(140, 140, 140));
+        kButton3.setForeground(new java.awt.Color(255, 255, 255));
+        kButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/repeat.png"))); // NOI18N
+        kButton3.setText("Converter");
+        kButton3.setToolTipText("Converte o número decimal informado para a base escolhida");
+        kButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        kButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,7 +126,7 @@ public class Convrt extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(base, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,11 +138,17 @@ public class Convrt extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(ndec, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(result, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(61, 61, 61)
+                                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -98,20 +157,25 @@ public class Convrt extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ndec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(base, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,8 +189,101 @@ public class Convrt extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(528, 226));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
+        ndec.setText("");
+        base.setSelectedItem("Selecione");
+        result.setText("");
+    }//GEN-LAST:event_kButton2ActionPerformed
+
+    private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
+        if(ndec.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Favor inserir um número para conversão", "Aviso - Conversor", JOptionPane.INFORMATION_MESSAGE, erro);
+        }
+        
+        ndecimal = Integer.parseInt(ndec.getText());
+        b = base.getSelectedItem().toString();
+        r = "";
+
+        if("Selecione".equals(base.getSelectedItem().toString())){
+            JOptionPane.showMessageDialog(null, "Favor selecionar a base para conversão", "Aviso - Conversor", JOptionPane.INFORMATION_MESSAGE, erro);
+        }
+        
+        if ("Binário".equals(b)) {
+            while ((ndecimal / 2) >= 1) {
+                r = ndecimal % 2 + r;
+                ndecimal = ndecimal / 2;
+            }
+            r = ndecimal + r;
+            System.out.println(r);
+            result.setText(r);
+        }
+
+        if ("Octal".equals(b)) {
+            while ((ndecimal / 8) >= 1) {
+                r = ndecimal % 8 + r;
+                ndecimal = ndecimal / 8;
+            }
+            r = ndecimal + r;
+            System.out.println(r);
+            result.setText(r);
+        }
+
+        if ("Hexadecimal".equals(b)) {
+            while ((ndecimal / 16) >= 1) {
+                int n;
+
+                n = ndecimal % 16;
+
+                if (n < 10) {
+                    r = n + r;
+                } else if (n == 10) {
+                    r = "A" + r;
+                } else if (n == 11) {
+                    r = "B" + r;
+                } else if (n == 12) {
+                    r = "C" + r;
+                } else if (n == 13) {
+                    r = "D" + r;
+                } else if (n == 14) {
+                    r = "E" + r;
+                } else if (n == 15) {
+                    r = "F" + r;
+                }
+                ndecimal = ndecimal / 16;
+            }
+            int n2;
+            n2 = ndecimal % 16;
+
+            if (n2 == 10) {
+                r = "A" + r;
+            } else if (n2 == 11) {
+                r = "B" + r;
+            } else if (n2 == 12) {
+                r = "C" + r;
+            } else if (n2 == 13) {
+                r = "D" + r;
+            } else if (n2 == 14) {
+                r = "E" + r;
+            } else if (n2 == 15) {
+                r = "F" + r;
+            } else {
+                r = ndecimal + r;
+            }
+
+            System.out.println(r);
+            result.setText(r);
+        }
+        
+        
+    }//GEN-LAST:event_kButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,22 +314,27 @@ public class Convrt extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Convrt().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Convrt().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> base;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private br.com.cyber.componente.KButton kButton1;
+    private br.com.cyber.componente.KButton kButton2;
+    private br.com.cyber.componente.KButton kButton3;
+    private javax.swing.JTextField ndec;
+    private javax.swing.JTextField result;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/repeat.png")));
+    }
 }
