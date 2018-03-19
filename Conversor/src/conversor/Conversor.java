@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author luizo
+ * @author Luiz Cassol
  */
 public class Conversor {
 
@@ -19,95 +19,95 @@ public class Conversor {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner ler = new Scanner(System.in);
-        String resultado = "";
-        int num;
+        String r = "";
+        int ndec;
         double r2;
 
-        System.out.println("Digite o número 1 para converter de decimal para binário");
-        System.out.println("Digite o número 2 para converter de decimal para octal");
-        System.out.println("Digite o número 3 para converter de decimal para hexadecimal");
-        int a;
-        a = ler.nextInt();
-        System.out.println("Digite o número para converter: ");
-        num = ler.nextInt();
+        System.out.println("Digite 1 para decimal - binário");
+        System.out.println("Digite 2 para decimal - octal");
+        System.out.println("Digite 3 para decimal - hexadecimal");
+        int b;
+        b = ler.nextInt();
+        System.out.println("Digite o número decimal que deseja converter: ");
+        ndec = ler.nextInt();
 
-        if (a == 1) {
-            while ((num / 2) >= 1) {
+        if (b == 1) {
+            while ((ndec / 2) >= 1) {
 
-                resultado = num % 2 + resultado;
-                num = num / 2;
-
-            }
-            resultado = num + resultado;
-            System.out.println(resultado);
-
-        }
-        if (a == 2) {
-            while ((num / 8) >= 1) {
-
-                resultado = num % 8 + resultado;
-                num = num / 8;
+                r = ndec % 2 + r;
+                ndec = ndec / 2;
 
             }
-            resultado = num + resultado;
-            System.out.println(resultado);
+            r = ndec + r;
+            System.out.println(r);
 
         }
-        if (a == 3) {
-            while (num/16 >= 1) {
+        if (b == 2) {
+            while ((ndec / 8) >= 1) {
+
+                r = ndec % 8 + r;
+                ndec = ndec / 8;
+
+            }
+            r = ndec + r;
+            System.out.println(r);
+
+        }
+        if (b == 3) {
+            while (ndec/16 >= 1) {
                 int n;
 
-                n = num%16;
+                n = ndec%16;
 
                 
                 if (n == 10) {
-                    resultado = "A" + resultado;
+                    r = "A" + r;
                 }
                 else if (n == 11) {
-                    resultado = "B" + resultado;
+                    r = "B" + r;
                 }
                 else if (n == 12) {
-                    resultado = "C" + resultado;
+                    r = "C" + r;
                 }
                 else if (n == 13) {
-                    resultado = "D" + resultado;
+                    r = "D" + r;
                 }
                 else if (n == 14) {
-                    resultado = "E" + resultado;
+                    r = "E" + r;
                 }
                 else if (n == 15) {
-                    resultado = "F" + resultado;
+                    r = "F" + r;
                 }
                 else if (n < 10){
-                    resultado = n + resultado;
+                    r = n + r;
                 }
 
-                num = num/16;
+                ndec = ndec/16;
 
             }
-            r2 = num%16;
+            r2 = ndec%16;
             if (r2 == 10) {
-                resultado = "A" + resultado;
+                r = "A" + r;
             }
             else if (r2 == 11) {
-                resultado = "B" + resultado;
+                r = "B" + r;
             }
             else if (r2 == 12) {
-                resultado = "C" + resultado;
+                r = "C" + r;
             }
             else if (r2 == 13) {
-                resultado = "D" + resultado;
+                r = "D" + r;
             }
             else if (r2 == 14) {
-                resultado = "E" + resultado;
+                r = "E" + r;
             }
             else if (r2 == 15) {
-                resultado = "F" + resultado;
+                r = "F" + r;
             } else {
-                resultado = num + resultado;
+                r = ndec + r;
             }
             
-            System.out.println(resultado);
+            System.out.println(r);
         }
     }
 
