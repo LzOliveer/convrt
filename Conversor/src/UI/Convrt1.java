@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author luizo
  */
-public class Convrt extends javax.swing.JFrame {
+public class Convrt1 extends javax.swing.JFrame {
     
     Icon erro = new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Icones/Erro.png"))));
     
@@ -24,7 +24,7 @@ public class Convrt extends javax.swing.JFrame {
     /**
      * Creates new form Convrt
      */
-    public Convrt() {
+    public Convrt1() {
         initComponents();
         setIcon();
     }
@@ -43,19 +43,20 @@ public class Convrt extends javax.swing.JFrame {
         ndec = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        base = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         result = new javax.swing.JTextField();
         kButton1 = new br.com.cyber.componente.KButton();
         kButton2 = new br.com.cyber.componente.KButton();
         kButton3 = new br.com.cyber.componente.KButton();
+        base = new br.com.cyber.componente.KComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor Numérico");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Digite o número decimal que deseja converter");
@@ -66,9 +67,6 @@ public class Convrt extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Selecione a base para converter");
-
-        base.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        base.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Binário", "Octal", "Hexadecimal" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Resultado da converão");
@@ -116,13 +114,19 @@ public class Convrt extends javax.swing.JFrame {
             }
         });
 
+        base.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 180, 180)));
+        base.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Binário", "Octal", "Hexadecimal" }));
+        base.setToolTipText("");
+        base.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        base.setTheme(br.com.cyber.componente.KComboBox.ThemeOption.NIGHT);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -302,25 +306,27 @@ public class Convrt extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Convrt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Convrt1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Convrt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Convrt1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Convrt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Convrt1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Convrt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Convrt1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Convrt().setVisible(true);
+            new Convrt1().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> base;
+    private br.com.cyber.componente.KComboBox base;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
